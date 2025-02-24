@@ -122,12 +122,16 @@
 
         function renderEntries() {
             const container = document.getElementById('entriesContainer');
-            container.innerHTML = entries.map(entry => `
-                <div class="entry">
-                    <div class="entry-date">${new Date(entry.date).toLocaleString()}</div>
-                    <div class="entry-text">${entry.text}</div>
-                </div>
-            `).join('');
+            container.innerHTML = entries.map(entry => {
+                const date = new Date(entry.date);
+                const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
+                return `
+                    <div class="entry">
+                        <div class="entry-date">${dayName}, ${date.toLocaleString()}</div>
+                        <div class="entry-text">${entry.text}</div>
+                    </div>
+                `;
+            }).join('');
         }
 
         function saveState() {
