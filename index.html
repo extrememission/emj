@@ -14,7 +14,7 @@
             --accent-color: #4a9eff;
             --entry-bg: #2a2a2a;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
@@ -98,6 +98,7 @@
         <textarea id="entry" placeholder="Write your journal entry..."></textarea>
         <div class="entries" id="entriesContainer"></div>
         <div class="buttons">
+            <button onclick="addEntry()" style="background: #4CAF50;">Submit Entry</button>
             <button onclick="saveState()">Save Journal</button>
             <button onclick="loadState()">Load Journal</button>
         </div>
@@ -155,12 +156,7 @@
             input.click();
         }
 
-        document.getElementById('entry').addEventListener('keydown', e => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                addEntry();
-            }
-        });
+        
 
         // Service Worker Registration
         if ('serviceWorker' in navigator) {
